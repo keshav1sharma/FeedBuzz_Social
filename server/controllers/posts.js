@@ -10,7 +10,11 @@ export const createPost = async (req, res) => {
     const { userId, description, picturePath } = req.body;
     let result = undefined ;
     if (req.file && req.file.path) {
-      result = await cloudinary.uploader.upload(req.file.path);
+      result = await cloudinary.uploader.upload(req.file.path).catch(err => {
+        console.error('Error uploading file to Cloudinary:', err);
+        res.status(500).json({ message: 'Error uploading file to Cloudinary' });
+        return;
+      });
     }
     //console.log(result.secure_url);
 
