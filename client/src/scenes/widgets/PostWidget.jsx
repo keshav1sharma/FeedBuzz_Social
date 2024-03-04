@@ -37,7 +37,7 @@ const PostWidget = ({
   const primary = palette.primary.main;
 
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
+    const response = await fetch(`https://feed-buzz-social.vercel.app/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ const PostWidget = ({
   };
 
   const addComment = async () => {
-    const response = await fetch(`http://localhost:3001/posts/${postId}/comment`, {
+    const response = await fetch(`https://feed-buzz-social.vercel.app/posts/${postId}/comment`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
