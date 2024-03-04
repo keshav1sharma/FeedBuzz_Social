@@ -67,7 +67,9 @@ cloudinary.config({
 
 //const result = await cloudinary.uploader.upload("public/assets/logo.png");
 
-
+app.get("/", (req, res) => {
+  res.send(`Server is running`);
+});
 // routes with files
 app.post("/auth/register",upload.single("picture"),register);
 app.post("/posts", verify, upload.single("picture"), createPost);
