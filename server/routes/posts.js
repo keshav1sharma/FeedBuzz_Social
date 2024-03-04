@@ -4,7 +4,7 @@ import { verify } from "../midlleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getFeedPosts);
+router.get("/",verify, getFeedPosts);
 router.get("/:userId/posts", verify, getUserPosts);
 router.patch("/:id/like", verify, likePost);
 router.post("/:id/comment",verify,addComment);
