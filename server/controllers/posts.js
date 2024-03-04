@@ -2,19 +2,18 @@ import Post from "../models/Post.js";
 import User from "../models/User.js";
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
+import path from "path";
 
 /* CREATE */
 export const createPost = async (req, res) => {
   try {
     const { userId, description, picturePath } = req.body;
-    const result = await cloudinary.uploader.upload(req.file.path);
+    let result = undefined ;
+    if (req.file && req.file.path) {
+      result = await cloudinary.uploader.upload(req.file.path);
+    }
     //console.log(result.secure_url);
-    // fs.unlink(req.file.path, (err) => {
-    //   if (err) {
-    //     console.error(err);
-    //     return;
-    //   }
-    // });
+
     const user = await User.findById(userId);
     const newPost = new Post({
       userId,
@@ -23,15 +22,24 @@ export const createPost = async (req, res) => {
       location: user.location,
       description,
       userPicturePath: user.picturePath,
-      picturePath: result.secure_url,
+      picturePath: result ? result.secure_url : picturePath,
       likes: {},
       comments: [],
     });
     await newPost.save();
 
     const post = await Post.find();
+    if (req.file && req.file.path) {
+      fs.unlink(req.file.path, (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      });
+    }
     res.status(201).json(post);
   } catch (err) {
+    console.log(err.message);
     res.status(409).json({ message: err.message });
   }
 };

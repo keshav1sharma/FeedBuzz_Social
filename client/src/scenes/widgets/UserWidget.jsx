@@ -130,7 +130,7 @@ import {
             </FlexBetween>
             <EditOutlined sx={{ color: main }} />
           </FlexBetween>
-  
+          
           <FlexBetween gap="1rem">
             <FlexBetween gap="1rem">
               <img src="https://feed-buzz-social.vercel.app/assets/linkedin.png" alt="linkedin" />
