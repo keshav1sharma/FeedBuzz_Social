@@ -9,12 +9,12 @@ export const createPost = async (req, res) => {
     const { userId, description, picturePath } = req.body;
     const result = await cloudinary.uploader.upload(req.file.path);
     //console.log(result.secure_url);
-    fs.unlink(req.file.path, (err) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-    });
+    // fs.unlink(req.file.path, (err) => {
+    //   if (err) {
+    //     console.error(err);
+    //     return;
+    //   }
+    // });
     const user = await User.findById(userId);
     const newPost = new Post({
       userId,
