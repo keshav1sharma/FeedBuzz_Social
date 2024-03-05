@@ -23,7 +23,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
 
   const patchFriend = async () => {
     const response = await fetch(
-      `https://feed-buzz-social.vercel.app/users/${_id}/${friendId}`,
+      `https://feedbuzz-social.onrender.com/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {

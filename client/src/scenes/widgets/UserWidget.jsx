@@ -22,7 +22,7 @@ import {
     const main = palette.neutral.main;
   
     const getUser = async () => {
-      const response = await fetch(`https://feed-buzz-social.vercel.app/users/${userId}`, {
+      const response = await fetch(`https://feedbuzz-social.onrender.com/users/${userId}`, {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -120,7 +120,7 @@ import {
   
           <FlexBetween gap="1rem" mb="0.5rem">
             <FlexBetween gap="1rem">
-              <img src="https://feed-buzz-social.vercel.app/assets/twitter.png" alt="twitter" />
+              <img src="https://feedbuzz-social.onrender.com/assets/twitter.png" alt="twitter" />
               <Box>
                 <Typography color={main} fontWeight="500">
                   Twitter
@@ -133,7 +133,7 @@ import {
           
           <FlexBetween gap="1rem">
             <FlexBetween gap="1rem">
-              <img src="https://feed-buzz-social.vercel.app/assets/linkedin.png" alt="linkedin" />
+              <img src="https://feedbuzz-social.onrender.com/assets/linkedin.png" alt="linkedin" />
               <Box>
                 <Typography color={main} fontWeight="500">
                   Linkedin
