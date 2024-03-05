@@ -34,17 +34,17 @@ export const createPost = async (req, res) => {
     await newPost.save();
 
     const post = await Post.find();
-    if (req.file && req.file.path) {
-      fs.unlink(req.file.path, (err) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      });
-    }
+    // if (req.file && req.file.path) {
+    //   fs.unlink(req.file.path, (err) => {
+    //   if (err) {
+    //     console.error(err);
+    //     return;
+    //   }
+    //   });
+    // }
     res.status(201).json(post);
   } catch (err) {
-    console.log(err.message);
+    console.log("Error end of block : "+ err.message);
     res.status(409).json({ message: err.message });
   }
 };
